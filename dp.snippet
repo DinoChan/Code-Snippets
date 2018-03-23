@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Keywords>
+                <Keyword>dp</Keyword>
+            </Keywords>
+            <SnippetTypes>
+                <SnippetType>SurroundsWith</SnippetType>
+            </SnippetTypes>
+            <Title>Dependency Property</Title>
+            <Author>dino.c</Author>
+            <Description>For Dependency Property</Description>
+            <HelpUrl>
+            </HelpUrl>
+            <Shortcut>dp</Shortcut>
+        </Header>
+        <Snippet>
+            <References>
+                <Reference>
+                    <Assembly>
+                    </Assembly>
+                </Reference>
+            </References>
+            <Declarations>
+                <Literal Editable="true">
+                    <ID>PropertyType</ID>
+                    <ToolTip>属性类型</ToolTip>
+                    <Default>int</Default>
+                    <Function>
+                    </Function>
+                </Literal>
+                <Literal Editable="true">
+                    <ID>MyProperty</ID>
+                    <ToolTip>属性名</ToolTip>
+                    <Default>MyProperty</Default>
+                    <Function>
+                    </Function>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>classname</ID>
+                    <ToolTip>类名</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>ClassNamePlaceholder</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp" Kind="method body">
+                <![CDATA[        
+        /// <summary>
+        /// 获取或设置$MyProperty$的值
+        /// </summary>  
+        public $PropertyType$ $MyProperty$
+        {
+            get => ($PropertyType$)GetValue($MyProperty$Property);
+            set => SetValue($MyProperty$Property, value);
+        }
+
+        /// <summary>
+        /// 标识 $MyProperty$ 依赖属性。
+        /// </summary>
+        public static readonly DependencyProperty $MyProperty$Property =
+            DependencyProperty.Register(nameof($MyProperty$), typeof($PropertyType$), typeof($classname$), new PropertyMetadata(default($PropertyType$), On$MyProperty$Changed));
+
+        private static void On$MyProperty$Changed(DependencyObject obj,DependencyPropertyChangedEventArgs args)
+        {
+           
+            var oldValue = ($PropertyType$)args.OldValue;
+            var newValue = ($PropertyType$)args.NewValue;
+            if (oldValue != newValue)
+              return;
+            
+            var target= obj as $classname$;
+            target?.On$MyProperty$Changed(oldValue, newValue);
+        }
+
+        protected virtual void On$MyProperty$Changed($PropertyType$ oldValue,$PropertyType$ newValue)
+        {
+        }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
