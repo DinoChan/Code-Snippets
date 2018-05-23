@@ -25,7 +25,7 @@ private static void OnMyPropertyChanged(DependencyObject obj, DependencyProperty
 
     var oldValue = (int)args.OldValue;
     var newValue = (int)args.NewValue;
-    if (oldValue != newValue)
+    if (oldValue == newValue)
         return;
 
     var target = obj as MainPage;
