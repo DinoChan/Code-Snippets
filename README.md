@@ -10,7 +10,6 @@
 public int MyProperty
 {
     get => (int)GetValue(MyPropertyProperty);
-
     set => SetValue(MyPropertyProperty, value);
 }
 
@@ -32,9 +31,15 @@ private static void OnMyPropertyChanged(DependencyObject obj, DependencyProperty
     target?.OnMyPropertyChanged(oldValue, newValue);
 }
 
+/// <summary>
+/// MyProperty 属性更改时调用此方法。
+/// </summary>
+/// <param name="oldValue">MyProperty 属性的旧值。</param>
+/// <param name="newValue">MyProperty 属性的新值。</param>
 protected virtual void OnMyPropertyChanged(int oldValue, int newValue)
 {
 }
+
 
 ```
 
