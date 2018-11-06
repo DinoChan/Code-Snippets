@@ -3,7 +3,7 @@
 
 依赖属性：
 
-``` CS
+``` csharp
 /// <summary>
 /// 获取或设置MyProperty的值
 /// </summary>  
@@ -21,7 +21,6 @@ public static readonly DependencyProperty MyPropertyProperty =
 
 private static void OnMyPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 {
-
     var oldValue = (int)args.OldValue;
     var newValue = (int)args.NewValue;
     if (oldValue == newValue)
